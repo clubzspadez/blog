@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   # We set the root of our application as posts/index, so whenever a visitor points her browser to the root of our application, she will be presented with the index page of our post.
 
   root "posts#index"
