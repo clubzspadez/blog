@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+
+  #This authenticates admin whenever a post is to be created, updated or destroyed.
+  before_action :authenticate_admin!, except: [:index, :show]
+
+
   before_action :find_post, only: [:edit, :update, :show, :delete]
 
   # Index action to render all posts
@@ -8,7 +13,7 @@ class PostsController < ApplicationController
 
  # Create action saves the post into database
  def create
-   @post = Post.new
+   @post = Post.new(post_params)
    if @post.save(post_params)
      flash[:notice] = "Successfully created post!"
      redirect_to post_path(@post)
@@ -33,9 +38,10 @@ class PostsController < ApplicationController
 
    # =>  Update action updates the post with the new information
   def update
+    @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
         flash[:notice] = "Successfully updated post!"
-        redirect_to post_path(@posts)
+        redirect_to post_path
     else
         flash[:alert] = "Error updating post!"
         render :edit
@@ -44,6 +50,7 @@ class PostsController < ApplicationController
 
     # The destroy action removes the post permanently from the database
   def destroy
+    @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "Successfully deleted post!"
       redirect_to posts_path
