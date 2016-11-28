@@ -13,6 +13,8 @@ gem 'bootstrap-sass', '~> 3.3'
 
 gem 'ckeditor', github: 'galetahub/ckeditor'
 
+gem 'non-stupid-digest-assets', '~> 1.0.4'
+
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
