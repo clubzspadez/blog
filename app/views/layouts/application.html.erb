@@ -7,15 +7,16 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
 
 
     <%= render  "layouts/navigation" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-   <div class="cotainer-fluid">
+    <div class="cotainer-fluid">
+
+
      <%= yield %>
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
    </div>
   </body>
 </html>
